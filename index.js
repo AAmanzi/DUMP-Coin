@@ -1,4 +1,18 @@
 const tecaj = 0.123
+const kontakti = [
+  'Anita',
+  'Ante',
+  'Bruna',
+  'Duje',
+  'Frane',
+  'Ivan',
+  'Ivana',
+  'Josip',
+  'Kreso',
+  'Luka',
+  'Mate',
+  'Matea'
+]
 
 let stanjeRacuna = 500
 const transakcije = [
@@ -15,20 +29,6 @@ const transakcije = [
     jeLiIzlazna: true
   }
 ];
-const kontakti = [
-  'Anita',
-  'Ante',
-  'Bruna',
-  'Duje',
-  'Frane',
-  'Ivan',
-  'Ivana',
-  'Josip',
-  'Kreso',
-  'Luka',
-  'Mate',
-  'Matea'
-]
 
 function dohvatiPoslaneTransakcije() {
   const dohvaceneTransakcije = []
