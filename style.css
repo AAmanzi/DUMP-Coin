@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #171b1c;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 116px;
+  background-color: #242728;
+}
+
+.navbar {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 30px;
+  padding: 8px 12px;
+  color: white;
+  margin-right: 36px;
+}
+
+.link-colored {
+  background: #44c79b;
+}
+
+.account {
+  display: flex;
+  background: #2e3132;
+  border-radius: 30px;
+  padding: 8px 12px;
+}
+
+.account-status {
+  font-size: 16px;
+  color: white;
+  margin-right: 16px;
+}
+
+.account-balance {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+}
+
+.transactions {
+  margin-top: 40px;
+  margin-left: 116px;
+  padding-right: 40px;
+  border-right: 1px solid #242728;
+  width: 60%;
+}
+
+.transactions-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.transaction {
+  display: flex;
+  border-bottom: 1px solid #242728;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.transaction-image {
+  border-radius: 50%;
+  margin: 0px 24px;
+}
+
+.transaction-person-name {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.transaction-time {
+  font-size: 16px;
+  color: #bfbfbf;
+  margin-left: auto;
+}
+
+.transaction-amount {
+  font-size: 16px;
+  color: #bfbfbf;
+  margin-bottom: 12px;
+}
+
+.green {
+  color: #00ec42;
+}
+
+.red {
+  color: #ff2e2e;
+}
+
+.calculator {
+  margin-top: 40px;
+  margin-right: 116px;
+  margin-left: 40px;
+  width: 40%;
+}
+
+.calculator-title {
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  margin-bottom: 32px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.input-text {
+  font-size: 16px;
+  color: white;
+  margin-right: 24px;
+  width: 60px;
+}
+
+.input,
+.select {
+  background: #242728;
+  border: 2px solid #3d4042;
+  color: white;
+  border-radius: 16px;
+  padding: 15px;
+  width: 300px;
+  outline: none;
+}
+
+.calculator-button {
+  background: #44c79b;
+  border-radius: 8px;
+  padding: 18px 32px;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
