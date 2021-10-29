@@ -55,9 +55,9 @@ function dohvatiPrimljeneTransakcije() {
 }
 
 function preracunajIznos(iznos, valuta) {
-  if (valuta === 'hrk') {
+  if (valuta === 'dc') {
     return iznos * tecaj;
-  } else if (valuta === 'dc') {
+  } else if (valuta === 'hrk') {
     return iznos / tecaj;
   } else {
     window.alert('Krivo pozvana funkcija');
