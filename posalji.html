@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js"></script>
     <title>DUMP Coin | Pošalji</title>
   </head>
   <body>
@@ -26,54 +25,29 @@
       <div class="transakcije">
         <h1 class="transakcije-naslov">Povijest poslanih transakcija</h1>
 
-        <div class="lista-transakcija">
-          <div class="transakcija">
-            <img src="slike/Frane.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Frane</p>
-              <p class="transakcija-iznos">
-                Poslano <span class="crveno">- 10,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 13:20</p>
-          </div>
-
-          <div class="transakcija">
-            <img src="slike/Ivana.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Ivana</p>
-              <p class="transakcija-iznos">
-                Poslano <span class="crveno">- 20,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 12:40</p>
-          </div>
-          <div class="transakcija">
-            <img src="slike/Anita.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Anita</p>
-              <p class="transakcija-iznos">
-                Poslano <span class="crveno">- 10,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 12:30</p>
-          </div>
-          <div class="transakcija">
-            <img src="slike/Josip.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Josip</p>
-              <p class="transakcija-iznos">
-                Poslano <span class="crveno">- 40,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 12:10</p>
-          </div>
+        <div class="lista-transakcija lista-poslanih-transakcija">
         </div>
       </div>
 
       <div class="akcija">
         <h2 class="akcija-naslov">Pošalji DUMP Coin</h2>
+
+        <div class="input-kutija">
+          <p class="input-tekst">DC</p>
+          <input type="number" class="input input-posalji-dc"/>
+        </div>
+
+        <div class="input-kutija">
+          <p class="input-tekst">Osoba</p>
+          <select class="input select">
+
+          </select>
+        </div>
+
+        <button class="botun" onclick="klikBotunaPosalji()">Posalji</button>
+        <p class="poruka"></p>
       </div>
     </div>
   </body>
+  <script src="index.js"></script>
 </html>

@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js"></script>
     <title>DUMP Coin | Zatraži</title>
   </head>
 
@@ -27,64 +26,29 @@
       <div class="transakcije">
         <h1 class="transakcije-naslov">Povijest primljenih transakcija</h1>
 
-        <div class="lista-transakcija">
-          <div class="transakcija">
-            <img src="slike/Ivan.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Ivan</p>
-              <p class="transakcija-iznos">
-                Primljeno <span class="zeleno">+ 10,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 13:20</p>
-          </div>
-
-          <div class="transakcija">
-            <img src="slike/Kreso.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Krešo</p>
-              <p class="transakcija-iznos">
-                Primljeno <span class="zeleno">+ 20,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 12:40</p>
-          </div>
-          <div class="transakcija">
-            <img src="slike/Ivana.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Ivana</p>
-              <p class="transakcija-iznos">
-                Primljeno <span class="zeleno">+ 40,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 12:30</p>
-          </div>
-          <div class="transakcija">
-            <img src="slike/Luka.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Luka</p>
-              <p class="transakcija-iznos">
-                Primljeno <span class="zeleno">+ 20,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 12:10</p>
-          </div>
-          <div class="transakcija">
-            <img src="slike/Matea.png" class="transakcija-slika" />
-            <div>
-              <p class="transakcija-ime-osobe">Matea</p>
-              <p class="transakcija-iznos">
-                Primljeno <span class="zeleno">+ 20,00 DC</span>
-              </p>
-            </div>
-            <p class="transakcija-vrijeme">02/10/21 11:45</p>
-          </div>
+        <div class="lista-transakcija lista-primljenih-transakcija">
         </div>
       </div>
 
       <div class="akcija">
         <h2 class="akcija-naslov">Zatraži DUMP Coin</h2>
+
+        <div class="input-kutija">
+          <p class="input-tekst">DC</p>
+          <input type="number" class="input input-zatrazi-dc"/>
+        </div>
+
+        <div class="input-kutija">
+          <p class="input-tekst">Osoba</p>
+          <select class="input select">
+
+          </select>
+        </div>
+
+        <button class="botun" onclick="klikBotunaZatrazi()">Zatrazi</button>
+        <p class="poruka"></p>
       </div>
     </div>
   </body>
+  <script src="index.js"></script>
 </html>

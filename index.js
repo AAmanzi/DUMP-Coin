@@ -14,21 +14,22 @@ const kontakti = [
   'Matea'
 ];
 
-let stanjeRacuna = 500;
-const transakcije = [
-  {
-    osoba: 'Ante',
-    iznos: 10.25,
-    vrijemeIDatum: '23/10/2021, 22:56:55',
-    jeLiIzlazna: false
-  },
-  {
-    osoba: 'Kreso',
-    iznos: 4.45,
-    vrijemeIDatum: '23/10/2021, 10:23:34',
-    jeLiIzlazna: true
-  }
-];
+let stanjeRacuna;
+let transakcije = [];
+
+const stanjeRacunaSpremljeno = localStorage.getItem('stanjeRacuna');
+
+if(stanjeRacunaSpremljeno !== null) {
+  stanjeRacuna = JSON.parse(stanjeRacunaSpremljeno);
+} else {
+  stanjeRacuna = 500;
+}
+
+const transakcijeSpremljeno = localStorage.getItem('transakcije');
+
+if(transakcijeSpremljeno !== null) {
+  transakcije = JSON.parse(transakcijeSpremljeno);
+}
 
 function dohvatiPoslaneTransakcije() {
   const dohvaceneTransakcije = [];
@@ -60,7 +61,7 @@ function preracunajIznos(iznos, valuta) {
   } else if (valuta === 'hrk') {
     return iznos / tecaj;
   } else {
-    window.alert('Krivo pozvana funkcija');
+    alert('Krivo pozvana funkcija');
   }
 }
 
@@ -100,4 +101,112 @@ function zatraziDumpCoin(iznos, osoba) {
   transakcije.push(novaTransakcija);
 
   return 'Uspjesno primljeno' + iznos + 'DUMP Coina';
+}
+
+function main() {
+  const elementStanjaRacuna = document.querySelector('.racun-stanje');
+  elementStanjaRacuna.innerHTML = stanjeRacuna + ' DC';
+
+  const elementListeSvihTransakcija = document.querySelector('.lista-svih-transakcija');
+  const elementListePoslanihTransakcija = document.querySelector('.lista-poslanih-transakcija');
+  const elementListePrimljenihTransakcija = document.querySelector('.lista-primljenih-transakcija');
+
+  let elementListeTransakcija;
+  let transakcijeZaIspis;
+
+  if(elementListeSvihTransakcija !== null){
+    elementListeTransakcija = elementListeSvihTransakcija;
+    transakcijeZaIspis = transakcije;
+  } else if (elementListePoslanihTransakcija !== null) {
+    elementListeTransakcija = elementListePoslanihTransakcija;
+    transakcijeZaIspis = dohvatiPoslaneTransakcije();
+  }else if (elementListePrimljenihTransakcija !== null) {
+    elementListeTransakcija = elementListePrimljenihTransakcija;
+    transakcijeZaIspis = dohvatiPrimljeneTransakcije();
+  }
+
+  elementListeTransakcija.innerHTML = '';
+
+  for (let transakcija of transakcijeZaIspis) {
+    let elementTransakcije = '<div class="transakcija">'
+     + '<img src="slike/' + transakcija.osoba + '.png" class="transakcija-slika" />'
+     + '<div>'
+     + '<p class="transakcija-ime-osobe">' + transakcija.osoba + '</p>'
+     + '<p class="transakcija-iznos">';
+
+    if (transakcija.jeLiIzlazna) {
+      elementTransakcije = elementTransakcije 
+      + 'Poslano <span class="crveno">- ' + transakcija.iznos + ' DC</span>';
+    } else {
+      elementTransakcije = elementTransakcije 
+      + 'Primljeno <span class="zeleno">+ ' + transakcija.iznos + ' DC</span>';
+    }
+
+    elementTransakcije = elementTransakcije
+     + '</p>'
+     + '</div>'
+     + '<p class="transakcija-vrijeme">' + transakcija.vrijemeIDatum + '</p>'
+     + '</div>';
+
+     elementListeTransakcija.innerHTML = elementListeTransakcija.innerHTML + elementTransakcije;
+  }
+
+  const elementSelect = document.querySelector('.select');
+  elementSelect.innerHTML = '';
+
+  for (const kontakt of kontakti) {
+    const noviKontakt = '<option value="' + kontakt + '">' + kontakt + '</option>';
+
+    elementSelect.innerHTML = elementSelect.innerHTML + noviKontakt;
+  }
+}
+
+main();
+
+function promjenaInputaKuna() {
+  const elementInputKune = document.querySelector('.input-kune');
+  const elementInputDc = document.querySelector('.input-dc');
+
+  const iznosUDc = preracunajIznos(elementInputKune.value, 'dc');
+
+  elementInputDc.value = iznosUDc;
+}
+
+function promjenaInputaDc() {
+  const elementInputKune = document.querySelector('.input-kune');
+  const elementInputDc = document.querySelector('.input-dc');
+
+  const iznosUKunama = preracunajIznos(elementInputDc.value, 'hrk');
+
+  elementInputKune.value = iznosUKunama;
+}
+
+function klikBotunaPosalji() {
+  const elementInputaDc = document.querySelector('.input-posalji-dc');
+  const elementSelect = document.querySelector('.select');
+
+  const poruka = posaljiDumpCoin(elementInputaDc.value, elementSelect.value);
+  const elementPoruka = document.querySelector('.poruka');
+
+  elementPoruka.innerHTML = poruka;
+
+  main();
+
+  localStorage.setItem('stanjeRacuna', stanjeRacuna);
+  localStorage.setItem('transakcije', JSON.stringify(transakcije));
+}
+
+function klikBotunaZatrazi() {
+  const elementInputaDc = document.querySelector('.input-zatrazi-dc');
+  const elementSelect = document.querySelector('.select');
+
+  const poruka = zatraziDumpCoin(elementInputaDc.value, elementSelect.value);
+  const elementPoruka = document.querySelector('.poruka');
+
+  elementPoruka.innerHTML = poruka;
+
+  main();
+
+  localStorage.setItem('stanjeRacuna', stanjeRacuna);
+  localStorage.setItem('transakcije', JSON.stringify(transakcije));
 }
